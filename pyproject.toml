@@ -1,0 +1,32 @@
+[project]
+name = "astrea"
+version = "0.1.0"
+description = "Astrea — nuclear astrophysics multi-agent research assistant"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "google-adk>=1.28.0",
+    "json-repair>=0.30.0",
+    "opik>=2.0.70",
+    "boto3>=1.43.0",
+    "python-dotenv>=1.0.0",
+    "pydantic-settings>=2.0.0",
+    "pyyaml>=6.0",
+    "fastapi>=0.115.0",
+    "uvicorn>=0.30.0",
+    "httpx>=0.27.0",
+    "mcp>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0.0"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["astrea*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,90 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Astrea — nuclear astrophysics multi-agent system (Phase 1 MVP).
+#
+#   InitAgent (sequential)
+#     ├─ PlannerAgent
+#     └─ OrchestratorAgent
+#          ├─ HypothesesAgent
+#          └─ ResearchAgent
+#
+# Validate:  python validate.py
+# Web:       python run_web.py
+# ─────────────────────────────────────────────────────────────────────────────
+
+defaults:
+  model: main
+
+agents:
+  InitAgent:
+    class: sequential
+    root: true
+    children:
+      - PlannerAgent
+      - OrchestratorAgent
+    description: >-
+      Astrea nuclear-astrophysics pipeline — research roadmap, hypothesis
+      generation, and literature synthesis.
+
+  PlannerAgent:
+    class: custom:session
+    description: >-
+      builds a research roadmap for nuclear-astrophysics questions and
+      registers tasks via create_plan (hypotheses and/or literature steps).
+    prompt: astrea_planner
+    tools: [create_plan_tool]
+    output_key: planner_roadmap
+    hitl: false
+
+  OrchestratorAgent:
+    class: llm
+    include_contents: none
+    description: >-
+      Astrea Orchestrator — executes the roadmap by delegating to
+      HypothesesAgent and ResearchAgent, then composes a cited final report.
+    prompt: astrea_orchestrator
+    tools: [task_tracker]
+    subordinates:
+      - HypothesesAgent
+      - ResearchAgent
+    callbacks:
+      before_agent: [before_get_task]
+
+  HypothesesAgent:
+    class: llm
+    description: >-
+      generates testable nuclear-astrophysics hypotheses (nucleosynthesis
+      pathways, reaction-rate sensitivities, abundance pattern interpretations).
+    routing: >-
+      when the direction is unclear, when multiple physical scenarios need to
+      be proposed, or when the user asks for testable hypotheses.
+    planning: |-
+      Use this to generate distinct, observationally or experimentally
+      testable nuclear-astrophysics hypotheses. Do not use it for literature
+      search — that belongs to ResearchAgent.
+    prompt: astrea_hypotheses
+    tools: [task_tracker]
+    output_key: hypotheses
+    callbacks:
+      before_agent: [before_get_task]
+
+  ResearchAgent:
+    class: llm
+    description: >-
+      retrieves nuclear-astrophysics knowledge and searches/downloads
+      literature (web, OpenAlex paper search, optional paper RAG).
+    routing: >-
+      when open-ended external knowledge or literature is required, claims
+      need citation, or reaction-rate / abundance / nucleosynthesis evidence
+      must be grounded in published sources.
+    planning: |-
+      Use this when information requires searching literature or the web.
+      Pass a self-contained English search query and the data fields to extract.
+    prompt: astrea_research
+    tools: [websearch, paper_analysis, papers_search, task_tracker]
+    output_key: search_results
+    callbacks:
+      before_agent: [before_get_task]
+      before_model: [inject_uploaded_papers]
+      before_tool: [WebSearchLimiter]
+      after_tool: [log_research_tool_calls]
+    hitl: false

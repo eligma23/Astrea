@@ -1,0 +1,40 @@
+2026-07-12 02:03:50,944 - INFO - astrea.assembly.assembler - ResearchAgent: optional tool 'paper_analysis' not configured — skipped
+2026-07-12 02:03:50,944 - INFO - astrea.assembly.assembler - ResearchAgent: optional tool 'papers_search' not configured — skipped
+2026-07-12 02:08:58,564 - INFO - astrea.assembly.assembler - ResearchAgent: optional tool 'paper_analysis' not configured — skipped
+2026-07-12 02:08:58,564 - INFO - astrea.assembly.assembler - ResearchAgent: optional tool 'papers_search' not configured — skipped
+2026-07-12 02:09:07,621 - INFO - astrea.web.hitl - HITL websocket attached (1 connection(s))
+2026-07-12 02:09:12,625 - INFO - astrea.web - WebHITLHandler wired into session agents: [] (empty list => HITL disabled via HITL__ENABLED)
+2026-07-12 02:09:19,704 - INFO - astrea.hitl.session_agent - PlannerAgent: no HITL handler wired (HITL__ENABLED off?) — output passed through without human review
+2026-07-12 02:10:31,629 - INFO - astrea.hitl.session_agent - PlannerAgent: no HITL handler wired (HITL__ENABLED off?) — output passed through without human review
+2026-07-12 02:11:00,233 - INFO - astrea.agents.callbacks.tool_callbacks - 
+[ResearchAgent tool called] tavily_search
+2026-07-12 02:11:00,233 - INFO - astrea.agents.callbacks.tool_callbacks - [ResearchAgent tool args] {'query': '锦屏深地核天体物理实验室 JUNA 实验 反应测量 束流 探测器 本底', 'search_depth': 'advanced', 'max_results': 10}
+2026-07-12 02:11:00,234 - INFO - astrea.agents.callbacks.tool_callbacks - 
+[ResearchAgent tool called] tavily_search
+2026-07-12 02:11:00,234 - INFO - astrea.agents.callbacks.tool_callbacks - [ResearchAgent tool args] {'query': 'JUNA Jinping underground nuclear astrophysics reaction measurement beam energy detector', 'search_depth': 'advanced', 'max_results': 10}
+2026-07-12 02:11:01,134 - INFO - astrea.agents.callbacks.tool_callbacks - 
+[ResearchAgent tool called] tavily_search
+2026-07-12 02:11:01,134 - INFO - astrea.agents.callbacks.tool_callbacks - [ResearchAgent tool args] {'query': '天体物理 关键核反应 深地测量 优先级 LUNA 伽莫夫窗口 低截面', 'search_depth': 'advanced', 'max_results': 10}
+2026-07-12 02:11:01,154 - INFO - astrea.agents.callbacks.tool_callbacks - 
+[ResearchAgent tool called] tavily_search
+2026-07-12 02:11:01,154 - INFO - astrea.agents.callbacks.tool_callbacks - [ResearchAgent tool args] {'query': 'underground nuclear astrophysics priority reactions LUNA CASPAR hydrogen burning helium burning Gamow window low cross section', 'search_depth': 'advanced', 'max_results': 10, 'include_domains': ['arxiv.org', 'adsabs.harvard.edu', 'ui.adsabs.harvard.edu', 'sciencedirect.com', 'springer.com', 'aanda.org', 'journals.aps.org', 'epj-conferences.org', 'inspirehep.net', 'doi.org']}
+2026-07-12 02:11:02,654 - INFO - astrea.agents.callbacks.tool_callbacks - 
+[ResearchAgent tool called] tavily_search
+2026-07-12 02:11:02,654 - INFO - astrea.agents.callbacks.tool_callbacks - [ResearchAgent tool args] {'query': '锦屏深地实验室 JUNA 核天体物理 科学目标 关键核反应 白皮书', 'max_results': 10, 'search_depth': 'advanced', 'include_domains': ['arxiv.org', 'adsabs.harvard.edu', 'epj-conferences.org', 'sciengine.com', 'cnki.net']}
+2026-07-12 02:11:02,660 - INFO - astrea.agents.callbacks.tool_callbacks - 
+[ResearchAgent tool called] tavily_search
+2026-07-12 02:11:02,660 - INFO - astrea.agents.callbacks.tool_callbacks - [ResearchAgent tool args] {'query': 'JUNA collaboration Jinping underground nuclear astrophysics science goals key reactions white paper', 'max_results': 10, 'search_depth': 'advanced', 'include_domains': ['arxiv.org', 'adsabs.harvard.edu', 'epj-conferences.org', 'springer.com', 'aanda.org']}
+2026-07-12 02:11:09,019 - INFO - astrea.agents.callbacks.tool_callbacks - 
+[ResearchAgent tool called] tavily_extract
+2026-07-12 02:11:09,019 - INFO - astrea.agents.callbacks.tool_callbacks - [ResearchAgent tool args] {'urls': ['https://arxiv.org/abs/2205.07964', 'https://arxiv.org/abs/2305.12345', 'https://www.sciengine.com/SCPMA/doi/10.1007/s11433-020-1604-0']}
+2026-07-12 02:11:12,995 - INFO - astrea.agents.callbacks.tool_callbacks - 
+[ResearchAgent tool called] tavily_extract
+2026-07-12 02:11:12,996 - INFO - astrea.agents.callbacks.tool_callbacks - [ResearchAgent tool args] {'urls': ['https://arxiv.org/abs/1909.01105', 'https://arxiv.org/abs/2105.04079', 'https://arxiv.org/abs/1603.00481'], 'extract_depth': 'basic'}
+2026-07-12 02:11:25,865 - INFO - astrea.agents.callbacks.tool_callbacks - 
+[ResearchAgent tool called] update_task_status
+2026-07-12 02:11:25,865 - INFO - astrea.agents.callbacks.tool_callbacks - [ResearchAgent tool args] {'task_id': 'TASK-1', 'status': 'DONE', 'notes': 'Tavily API monthly cap reached. Answered from training data. Key sources: Science Bulletin (2021), PRL (2022), and JUNA collaboration publications. Recommends follow-up verification with live search when API is available.'}
+2026-07-12 02:11:30,012 - INFO - astrea.agents.callbacks.tool_callbacks - 
+[ResearchAgent tool called] update_task_status
+2026-07-12 02:11:30,012 - INFO - astrea.agents.callbacks.tool_callbacks - [ResearchAgent tool args] {'task_id': 'TASK-3', 'status': 'DONE', 'notes': 'Tavily API monthly cap reached. Answered from training data with known JUNA publications. Key sources identified: Liu et al. 2016 (Sci. China), JUNA EPJ Web Conf. proceedings, and result papers from 2020-2022. Caveat: no live retrieval possible — answer based on model knowledge.'}
+2026-07-12 02:21:05,226 - INFO - astrea.web.hitl - HITL websocket detached (0 connection(s) left)
+2026-07-12 02:21:06,665 - ERROR - astrea.main - Warning: failed to cleanup uploaded papers for session session_001: expected string or bytes-like object, got 'NoneType'
